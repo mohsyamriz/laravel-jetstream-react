@@ -26,7 +26,7 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation, clas
         code: "",
     });
 
-    const twoFactorEnabled = !enabling && props.user?.two_factor_enabled;
+    const twoFactorEnabled = ! enabling && props.user?.two_factor_enabled;
 
     const enableTwoFactorAuthentication = () => {
         setEnabling(true);
@@ -40,7 +40,7 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation, clas
             ]),
             onFinish: () => {
                 setEnabling(false);
-                setConfirming(props.requiresConfirmation);
+                setConfirming(requiresConfirmation);
             },
         });
     };
@@ -92,7 +92,7 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation, clas
     };
 
     let heading3;
-    if (twoFactorEnabled && !confirming) {
+    if (twoFactorEnabled && ! confirming) {
         heading3 = "You have enabled two factor authentication.";
     }
     else if (twoFactorEnabled && confirming) {
@@ -154,7 +154,7 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation, clas
                                 )}
                             </div>
                         )}
-                        {recoveryCodes.length > 0 && !confirming && (
+                        {recoveryCodes.length > 0 && ! confirming && (
                             <div>
                                 <div className="mt-4 max-w-xl text-sm text-gray-600">
                                     <p className="font-semibold">
@@ -173,7 +173,7 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation, clas
                     </div>
                 )}
                 <div className="mt-5">
-                    {!twoFactorEnabled ? (
+                    {! twoFactorEnabled ? (
                         <div>
                             <ConfirmsPassword confirmed={enableTwoFactorAuthentication}>
                                 <PrimaryButton type="button" processing={enabling}>
@@ -196,7 +196,7 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation, clas
                             </ConfirmsPassword>
 
                             <ConfirmsPassword confirmed={regenerateRecoveryCodes}>
-                                {recoveryCodes.length > 0 && !confirming && (
+                                {recoveryCodes.length > 0 && ! confirming && (
                                     <SecondaryButton className="mr-3">
                                         Regenerate Recovery Codes
                                     </SecondaryButton>
@@ -204,7 +204,7 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation, clas
                             </ConfirmsPassword>
 
                             <ConfirmsPassword confirmed={showRecoveryCodes}>
-                                {recoveryCodes.length === 0 && !confirming && (
+                                {recoveryCodes.length === 0 && ! confirming && (
                                     <SecondaryButton className="mr-3">
                                         Show Recovery Codes
                                     </SecondaryButton>
@@ -220,7 +220,7 @@ export default function TwoFactorAuthenticationForm({ requiresConfirmation, clas
                             </ConfirmsPassword>
 
                             <ConfirmsPassword confirmed={disableTwoFactorAuthentication}>
-                                {!confirming && (
+                                {! confirming && (
                                     <DangerButton processing={disabling}>
                                         Disable
                                     </DangerButton>
