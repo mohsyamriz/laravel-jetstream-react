@@ -19,9 +19,7 @@ export default function TwoFactorChallenge() {
     const codeInput = useRef(null);
 
     const toggleRecovery = async () => {
-        setRecovery((recovery ^= true));
-
-        // await nextTick();
+        setRecovery((recovery != true));
 
         if (recovery) {
             recoveryCodeInput.current.focus();
